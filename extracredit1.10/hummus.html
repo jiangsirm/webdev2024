@@ -3,6 +3,31 @@
     <head>
         <title>Quick hummus recipe</title>  
         <meta charset="utf-8">
+        <style>
+            .box{
+                width: 100px;
+                height: 100px;
+                background-color: blueviolet;
+                position: relative;
+                border: 1px solid black;
+                z-index: 2;
+            }
+
+            .shifted {
+                position: relative;
+                top: -30px;
+            }
+
+            .box2 {
+                width: 100px;
+                height: 100px;
+                background-color:deeppink;
+                position: relative;
+                border: 1px solid black;
+                z-index: 1;
+            }
+
+        </style>
     </head>
     <body>
         <h1> Quick hummus recipe </h1>
@@ -37,5 +62,7 @@
             Refrigerate the finished hummus in a sealed container. You should be able to use it for about a week after you've made it. <br>
             If it starts to become fizzy, you should definitely discard it.Hummus is suitable for freezing; you should thaw it and use it within a couple of months.
         </p>
+        <div class="box"></div>
+        <div class="box2 shifted"></div>
     </body>
 </html>
