@@ -1,0 +1,80 @@
+body {
+    margin: 0px;
+    background-color: grey;
+}
+
+.grid-generic {
+    max-width: 100%;
+    min-height: 100vh;
+    display: grid;
+    grid-template-areas: 
+    "head head"
+    "sidebar main-content";
+    grid-template-columns: 20vw 80vw;
+    grid-template-rows: 16vh;
+    gap: 5px;
+    background-color: grey;
+    position: relative;
+}
+
+.grid-ele {
+    background-color: #222224;
+}
+
+.grid-head-container {
+    grid-area: head;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: clamp(1rem, 2vw + 0.1rem, 2rem);
+    font-family: 'Times New Roman', Times, sans-serif;
+    color: #888884;
+}
+
+.grid-sidebar-container {
+    border-top-right-radius: 2rem 2rem;
+    border-bottom-right-radius: 2rem 2rem;
+    grid-area: sidebar;
+}
+
+.grid-sidebar-container ul {
+    position: sticky;
+    top: 10%;
+    font-family: 'Times New Roman', Times, sans-serif;
+    font-size: clamp(1rem, 2vw + 0.1rem, 3rem);
+    margin-top: 50px;
+    margin-left: 17px;
+}
+
+.grid-sidebar-container li {
+    margin-top: 6vh;
+    color: #888884;
+}
+
+.grid-sidebar-container a {
+    text-decoration: none;
+    color: #888884;
+}
+
+.grid-sidebar-container a:active {
+    color: #444444;
+}
+
+.grid-sidebar-container a:hover {
+    text-decoration: underline;
+}
+
+#selected-sidebar{
+    color: azure;
+}
+
+.grid-content-container {
+    border-top-left-radius: 2rem 2rem;
+    border-bottom-left-radius: 2rem 2rem;
+    grid-area: main-content;
+    padding: 20px;
+}
+
+.test {
+    word-wrap:break-word;
+}

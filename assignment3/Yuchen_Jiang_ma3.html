@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Yuchen Jiang MA3</title>
+        <!-- Above line copied from previous assignment -->
+        <style>
+            body {
+                margin: 0px;
+                background-color: brown;
+            }
+            .grid-container {
+                display: grid;
+                grid-template-areas: 
+                    "head head head"
+                    "side-bar-l center-content side-bar-r"
+                    "foot foot foot";
+                grid-template-rows: 16.67vh 66.66vh 16.67vh;
+                grid-template-columns: 16.67vw 66.66vw 16.67vw;
+                gap: 10px;
+                background-color: brown;
+            }
+
+            .grid-ele-colors {
+                border: solid 1px olivedrab;
+                background-color: teal;
+            }
+
+            .header-container {
+                display: flex;
+                grid-area: head;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .side-bar-left-container {
+                grid-area: side-bar-l;
+            }
+            .side-bar-left-container li{
+                grid-area: side-bar-l;
+                margin-top: 5vh;
+            }
+
+            .side-bar-right-container {
+                grid-area: side-bar-r;
+            }
+
+            .footer-container {
+                grid-area: foot;
+            }
+
+            .content-container {
+                display: flex;
+                grid-area: center-content;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .box {
+                width: 16px;
+                height: 16px;
+                background-color: chartreuse;
+                transition: 500ms;
+            }
+
+            .box:hover {
+                background-color: black;
+                width: 120px;
+                height: 120px;
+            }
+
+        </style>
+
+    </head>
+    <body>
+        <div class="grid-container">
+            <div class="header-container grid-ele-colors">
+                <h1>Yuchen Jiang</h1>
+            </div>
+            <div class="side-bar-left-container grid-ele-colors"> 
+                <ul>
+                    <li>button</li>
+                    <li>button</li>
+                    <li>button</li>
+                    <li>button</li>
+                </ul>
+            </div>
+            <div class="side-bar-right-container grid-ele-colors">Right Side Bar</div>
+            <div class="content-container grid-ele-colors"> 
+                <div class="box"> </div>
+            </div>
+            <div class="footer-container grid-ele-colors">foot</div>
+        </div>
+
+    </body>
+</html>
