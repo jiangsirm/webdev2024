@@ -1,5 +1,3 @@
-#profile-pic {
-    width: 200px;
-    height: 200px;
-    border-radius: 10rem;
+.grid-content-container > div li{
+    margin-top: 0.5rem;
 }

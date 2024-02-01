@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin: 0px;
+                flex-direction: column;
+            }
+
+            .image-container {
+                width: 80vw;
+                min-height: 600px;
+                position: relative;
+            }
+
+            .image-left {
+                float: left;
+                width: 400px; 
+                height:250px; 
+                border: 2px solid #34495e;
+                margin: 20px;
+            }
+
+            .image-right {
+                float: left;
+                width: 400px; 
+                height:250px; 
+                border: 2px solid #34495e;
+                margin: 20px;
+            }
+
+            .image-center {
+                float: left;
+                top: 270px;
+                width: 400px; 
+                height:250px; 
+                border: 2px solid #34495e;
+                margin: 20px;
+            }
+
+            .image {
+                width: 400px; 
+                height:250px; 
+            }
+
+            .image:hover {
+                border: 2px solid #1abc9c;
+            }
+
+            .footer-container {
+                position: absolute;
+                top: 600px;
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: burlywood;
+            }
+
+        </style>
+
+    </head>
+    <body>
+        <div class="image-container">
+            <div class="image-left"><img class="image" src="https://www.w3schools.com/css/img_5terre.jpg"></div>
+            <div class="image-center"><img class="image" src="https://www.w3schools.com/css/img_forest.jpg"></div>
+            <div class="image-right"><img class="image" src="https://www.w3schools.com/css/img_lights.jpg"></div>
+            <div class="image-left"><img class="image" src="https://www.w3schools.com/css/img_mountains.jpg"></div>
+            <div class="footer-container">Footer</div>
+        </div>
+    </body>
+</html>
