@@ -58,6 +58,10 @@ body {
     color: #888884;
 }
 
+.grid-sidebar-container li:hover {
+    transform: scale(1.1);
+}
+
 .grid-sidebar-container a {
     text-decoration: none;
     color: #888884;
@@ -82,6 +86,11 @@ body {
     background-color: aliceblue;
     border: solid 10px #888884;
     margin-top: 30px;
+    transition: 500ms;
+}
+
+#profile-pic:hover {
+    transform: scale(1.2);
 }
 
 .grid-content-container {
@@ -109,6 +118,10 @@ body {
     overflow-y: scroll;
 }
 
+.grid-content-container > div p::first-letter {
+    font-size: 2.0rem;
+}
+
 
 
 .grid-content-container > div h2 {
@@ -116,8 +129,8 @@ body {
 }
 
 .grid-content-container > div img {
-    max-width: 1200px;
-    min-width: 60vw;
+    max-width: 1100px;
+    width: 60vw;
     margin-top: 1.5rem;
     margin-bottom: 1.5rem;
 }
@@ -155,5 +168,11 @@ body {
         display: inline;
         font-size: 1.2rem;
         text-decoration: underline;
+    }
+
+    .grid-content-container > div img {
+        width: 100%;
+        margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
     }
 }
