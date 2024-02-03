@@ -162,11 +162,15 @@ body {
     .grid-sidebar-container ul {
         list-style: none;
         padding-left: 0px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        width: 90%;
     }
 
     .grid-sidebar-container li {
         display: inline;
-        font-size: 1.2rem;
+        font-size: 3.7vw;
         text-decoration: underline;
     }
 
