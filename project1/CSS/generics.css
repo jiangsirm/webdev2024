@@ -89,6 +89,7 @@ body {
     border-bottom-left-radius: 2rem 2rem;
     grid-area: main-content;
     padding: 2rem;
+    font-family: 'Times New Roman', Times, sans-serif;
 }
 
 .grid-content-container > div {

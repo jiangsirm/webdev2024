@@ -2,6 +2,7 @@
 <html>
     <head>
         <link rel="stylesheet" href="../CSS/generics.css">
+        <link rel="stylesheet" href="./project.css">
         <title>Yuchen Jiang</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -21,7 +22,30 @@
                 </ul>
             </div>
             <div class="grid-content-container grid-ele">
-                <div class="test">test</div>
+                <div>
+                    <h1>Technical Projects</h1>
+                    <h2>Yijing Divination Program</h2>
+                    <p>
+                        This project is an OOD design aim to replicate the process of making divination via Yijing Hexagrams.
+                        Hexagram are symbols like ䷁ or ䷭. In order to get a divination, the user is expected to primarily use the string method, i.e. input a word or couple words of their choice.
+                        Then program would parse the input, interpret the input while translating it into numbers, and then find the corresponding hexagrams via the help of a Hashmap.
+                    </p>
+                    <p>
+                        In addition, per this specific methodology I have learnt and used, time also plays an important part of the divination; thus, the program would also fetch the time, more specifically, the hour, when the divination is made when interpreting the input.
+                        As a result, entering the same string at different times would provide you with different kind of result.
+                    </p>
+                    <p>
+                        Initially, the program only accepts English letters as valid input; recently, I have found a way to make the program compatible with Chinese characters, specifically refer to characters emcompassed in the CJK Unified Ideographs block of unicode characters.
+                    </p>
+
+                    <img src="../media/divination_Project.png" class="grid-content-image">
+                    <h2>Tasl log management</h2>
+                    <p>
+                        This <a href="https://github.com/jiangsirm/5004ExtraCredits/tree/jyc/ExtraCredits">project</a> is a team project, where I am in charge of the writting the controller and the actual interface. JavaFX seems to share a similar syntax with html.
+                        The data are stored in a csv file for the time's sake, which could be further improved via using a actual database. Nonetheless, this trivial program support task adding, marking for completion, and sorting features.
+                    </p>
+                    <img src="../media/Task_log.png" class="grid-content-image">
+                </div>
             </div>
         </div>
     </body>
