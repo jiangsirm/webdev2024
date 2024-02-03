@@ -11,7 +11,7 @@ body {
     "head head"
     "sidebar main-content";
     grid-template-columns: minmax(300px, 20%);
-    grid-template-rows: minmax(67px, 16vh);
+    grid-template-rows: minmax(100px, 16vh);
     gap: 5px;
     background-color: grey;
     position: relative;
@@ -27,7 +27,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: clamp(1.5rem, 2vw + 0.1rem, 3rem);
+    font-size: clamp(1.6rem, 1.8vw + 1rem, 2.5rem);
     color: #15150f;
     background-image: url(../media/Konachan.com\ -\ 199119\ alcd\ blood\ bloodborne\ cape\ doll\ flowers\ gray_hair\ hat\ headdress\ landscape\ leaves\ male\ moon\ night\ polychromatic\ scenic\ skull\ the_doll\ the_hunter\ tree.jpg);
     background-size: cover;
@@ -178,5 +178,11 @@ body {
         width: 100%;
         margin-top: 1.5rem;
         margin-bottom: 1.5rem;
+    }
+
+    .grid-head-container {
+        color: #888884;
+        -webkit-text-stroke: 2px #15150f;
+        /* this above line I get it via searching online for ways to add borders to each letter*/
     }
 }
