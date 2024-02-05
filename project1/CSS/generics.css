@@ -67,10 +67,6 @@ body {
     color: #888884;
 }
 
-.grid-sidebar-container a:active {
-    color: #444444;
-}
-
 .grid-sidebar-container a:hover {
     text-decoration: underline;
 }
@@ -121,8 +117,6 @@ body {
 .grid-content-container > div p::first-letter {
     font-size: 2.0rem;
 }
-
-
 
 .grid-content-container > div h2 {
     text-decoration: underline;
