@@ -27,7 +27,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: clamp(1.6rem, 1.8vw + 1rem, 2.5rem);
+    font-size: clamp(1.1rem, 1.8vw + 1rem, 2.5rem);
     color: #15150f;
     background-image: url(../media/Konachan.com\ -\ 199119\ alcd\ blood\ bloodborne\ cape\ doll\ flowers\ gray_hair\ hat\ headdress\ landscape\ leaves\ male\ moon\ night\ polychromatic\ scenic\ skull\ the_doll\ the_hunter\ tree.jpg);
     background-size: cover;
