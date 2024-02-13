@@ -4,7 +4,7 @@ function rollDice(inputString) {
     const diceSize = Number(numbers[1]);
     let result = 0;
     for(var i = diceNum; i > 0; i--) {
-       result += 1 + Math.floor(Math.random() *  (diceSize))
+       result += Math.ceil(Math.random() *  (diceSize))
     }
     return result
 }
