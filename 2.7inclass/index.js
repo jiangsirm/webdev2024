@@ -23,9 +23,10 @@ apple2
 const duck = "duck";
 const chicken = "kun";
 
-const best = "I like " + duck + chicken;
-const also = `I like ${duck}  and ${chicken}`;
+const best = "I like " + duck + " " + chicken;
+const also = `I like ${duck} and ${chicken}`;
 
+best 
 also
 
 thisFalse = 0 == true;
