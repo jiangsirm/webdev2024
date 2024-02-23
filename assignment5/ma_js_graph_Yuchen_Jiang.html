@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script>
+
+        // these data structures are available to all the code inside
+        // of the script tag.  You can store any data that you think
+        // will be helpful here.
+        // const arrayDataStructure = [];
+        // const objectDataStructure = {};
+
+        // if you pass an HTML element here, it will swap the class to be selected/unselected
+        function handleClick(elmt) {
+        if(elmt.className.includes('selected')) {
+                elmt.className = 'box';
+            } else {
+                elmt.className = 'box selected';
+            }
+        }
+
+            // the window load event means that this logic will only activate once the page
+            // has loaded
+        window.addEventListener("load", () => {
+            // get all of the elements with the classname "box"
+            const boxes = document.getElementsByClassName('box')
+            // iterate over them
+            for(let i = 0; i < boxes.length; i++) {
+                // and apply this click event to them
+                // task 1 - add event listener to each box!
+                boxes[i].addEventListener("click", () => {
+                    handleClick(boxes[i]);
+                    if (i % 3 > 0) {
+                        handleClick(boxes[i - 1]);
+                    }
+                    if (i % 3 < 2) {
+                        handleClick(boxes[i + 1]);
+                    }
+
+                    if (Math.floor(i / 3) > 0) {
+                        handleClick(boxes[i - 3]);
+                    }
+
+                    if (Math.floor(i / 3) < 2) {
+                        handleClick(boxes[i + 3]);
+                    }
+                })
+            }
+        })
+    </script>
+
+    <style>
+      .container {
+        display: grid;
+        grid-template-rows: 30% 30% 30%;
+        grid-template-columns: 30% 30% 30%;
+        height: 300px;
+        width: 300px
+      }
+
+      .box {
+        border: 1px solid purple;
+      }
+
+      .selected {
+        background-color: blueviolet;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="box">
+
+      </div>
+      <div class="box">
+
+      </div>
+      <div class="box">
+
+      </div>
+      <div class="box">
+
+      </div>
+      <div class="box">
+
+      </div>
+      <div class="box">
+
+      </div>
+      <div class="box">
+
+      </div>
+      <div class="box">
+
+      </div>
+      <div class="box">
+
+      </div>
+
+    </div>
+
+
+
+  </body>
+
+</html>
