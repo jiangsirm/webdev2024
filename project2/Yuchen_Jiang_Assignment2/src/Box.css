@@ -1,0 +1,65 @@
+:root {
+    --grid-height: 3;
+    --grid-width: 3;
+}
+
+.box {
+    text-wrap: wrap;
+    width: 1vw;
+    height: 1vw;
+    background-color: gray;
+    border: 1px solid black;
+    font-size: small;
+    font-family: 'Courier New', Courier, monospace;
+    z-index: 1;
+}
+
+.box:hover {
+    font-size: medium;
+    overflow: visible;
+    z-index: 2;
+    scale: 2;
+}
+
+
+.live {
+    background-color: black;
+    color: white;
+}
+
+.warning {
+    font-size: larger;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    grid-column-start: 1;
+    grid-column-end: -1;
+}
+
+#gridContainer {
+    display: grid;
+    width: min-content;
+    height: min-content;
+    grid-template-columns: repeat(var(--grid-width), 1fr);
+    grid-template-rows: repeat(var(--grid-height), 1fr);
+}
+
+#outerContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#gridOuterContainer {
+    display: flex;
+    height: 860px;
+    justify-content: center;
+    align-items: center;
+}
+
+.toolItem {
+    margin: 0px 10px 0px;
+}
+
+.cellInfo {
+    margin-top: 10px;
+}
