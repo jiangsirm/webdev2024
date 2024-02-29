@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import './App.css'
-import { Grid } from './GridGenerator' 
+import { Grid } from './GridGenerator'
 
 function App() {
 

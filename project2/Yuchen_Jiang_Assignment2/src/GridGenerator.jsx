@@ -7,25 +7,12 @@ export function Grid() {
     const [gridWidth, setGridWidth] = useState(20);
     const [gridHeight, setGridHeight] = useState(20);
     const [boxClass, setBoxClass] = useState(getRandomCells(gridWidth, gridHeight));
-    const [toggleAutoplay, setToggleAutoplay] = useState(false);
-    const [liveCell, setLiveCell] = useState(getLiveCells());
     const [heatMap, setHeatMap] = useState(Array(40* 40).fill(0));
+    const [liveCell, setLiveCell] = useState(getLiveCells());
+    const [toggleAutoplay, setToggleAutoplay] = useState(false);
     const [toggleHeatMap, setToggleHeatMap] = useState(false);
     
     const frame = 100;
-
-    const colorArray = [
-        "#000080", // Navy Blue
-        "#0000FF", // Blue
-        "#4169E1", // Royal Blue
-        "#6495ED", // Cornflower Blue
-        "#87CEEB", // Sky Blue
-        "#ADD8E6", // Light Blue
-        "#B0E0E6", // Powder Blue
-        "#BFEFFF", // Light Steel Blue
-        "#CFECEC", // Light Blue Grey
-        "#E0F8F8"  // Light Cyan
-      ];
 
     useEffect(() => {
         let interval;
@@ -44,28 +31,6 @@ export function Grid() {
     useEffect(() => {
         setHeatMap(getHeatDegree());
     }, [boxClass]);
-
-    function getHeatDegree() {
-        let update = [...heatMap];
-        for (let i = 0; i < gridHeight * gridWidth; i++) {
-            if (boxClass[i] === "box live") {
-                update[i] = 9;
-            } else if (update[i] > 0) {
-                update[i] -= 1;
-            }
-        }
-        return update;
-    }
-
-    function getLiveCells() {
-        let count = 0;
-        for (let i = 0; i < gridHeight * gridWidth; i++) {
-            if (boxClass[i] === 'box live') {
-                count += 1;
-            }
-        }
-        return count;
-    }
 
     function resetGrid() {
         setToggleAutoplay(false);
@@ -151,12 +116,51 @@ export function Grid() {
     function getRandomCells(width, height) {
         const update = Array(40 * 40).fill('box');
         for (let i = 0; i < width * height; i++) {
-                const possibility = Math.floor(Math.random() * 20);
-                if (possibility === 0) {
-                    update[i] = update[i] === 'box' ? 'box live': 'box';
+            const possibility = Math.floor(Math.random() * 25);
+            if (possibility === 0) {
+                update[i] = 'box live';
+                for (let row = -1; row <= 1; row++) {
+                    for (let col = -1; col <= 1; col++) {
+
+                        if (row === 0 && col === 0) continue;
+    
+                        const newRow = Math.floor(i / width) + row;
+                        const newCol = (i % width) + col;
+    
+                        if (newRow >= 0 && newRow < height && newCol >= 0 && newCol < width) {
+                            const neighborIndex = newRow * width + newCol;
+
+                            if (Math.random() < 0.2) {
+                                update[neighborIndex] = 'box live';
+                            }
+                        }
+                    }
                 }
+            }      
         }
         return update;
+    }
+
+    function getHeatDegree() {
+        let update = [...heatMap];
+        for (let i = 0; i < gridHeight * gridWidth; i++) {
+            if (boxClass[i] === "box live") {
+                update[i] = 9;
+            } else if (update[i] > 0) {
+                update[i] -= 1;
+            }
+        }
+        return update;
+    }
+
+    function getLiveCells() {
+        let count = 0;
+        for (let i = 0; i < gridHeight * gridWidth; i++) {
+            if (boxClass[i] === 'box live') {
+                count += 1;
+            }
+        }
+        return count;
     }
     
     function randomizeLiveCell(width, height) {
@@ -168,7 +172,7 @@ export function Grid() {
     function changeWidth(event) {
         const newWidth = parseInt(event.target.value);
         if(isNaN(newWidth)) {
-            setGridWidth(3)
+            setGridWidth(NaN)
         } else if (newWidth < 3) {
             setGridWidth(3);
         }  else if (newWidth > 40) {
@@ -176,15 +180,13 @@ export function Grid() {
         } else {
             setGridWidth(newWidth);
         }
-        setToggleAutoplay(false);
-        setBoxClass(Array(40 * 40).fill('box'));
-        setHeatMap(Array(40 * 40).fill(0));
+        resetGrid()
     }
 
     function changeHeight(event) {
         const newHeight = parseInt(event.target.value);
         if (isNaN(newHeight)) {
-            setGridHeight(3);
+            setGridHeight(NaN);
         } else if (newHeight < 3) {
             setGridHeight(3);
         } else if (newHeight > 40) {
@@ -192,42 +194,41 @@ export function Grid() {
         } else {
             setGridHeight(newHeight);
         }
-        setToggleAutoplay(false);
-        setBoxClass(Array(40 * 40).fill('box'));
-        setHeatMap(Array(40 * 40).fill(0));
+        resetGrid();
     }
 
     function clickBox(index) {
         if (toggleAutoplay === false) {
-            console.log("clicked")
             const update = [...boxClass];
             update[index] = update[index] === 'box' ? 'box live': 'box';
             setBoxClass(update)
         }
     }
 
-    function getColorCode(number) {
-        return colorArray[9 - number];
-    }
-
     function renderGrid() {
         const gridBoxes = [];
-        for (let i = 0; i < gridWidth * gridHeight; i++) {
-            let boxElement;
-            if (toggleHeatMap) {
-                boxElement = <div key={i} className={boxClass[i]} onClick={() => clickBox(i)} style={{"backgroundColor": getColorCode(heatMap[i])}}></div>;
-            } else {
-                boxElement = <div key={i} className={boxClass[i]} onClick={() => clickBox(i)}></div>;
+        for (let h = 0; h < gridHeight; h++) {
+            let boxRow = []
+            for (let r = 0; r < gridWidth; r++) {
+                let i = r + h * gridWidth
+                let boxElement;
+                if (toggleHeatMap) {
+                    boxElement = <div key={i} className={boxClass[i] + " " + "heatLevel" + heatMap[i].toString()} onClick={() => clickBox(i)} ></div>;
+                } else {
+                    boxElement = <div key={i} className={boxClass[i]} onClick={() => clickBox(i)}></div>;
+                }
+                boxRow.push(boxElement);
             }
-            gridBoxes.push(boxElement);
+            gridBoxes.push(<div className={"gridRowContainer"}>{boxRow}</div>);
         }
         return gridBoxes;   
     }
 
+    
     return (
         <div id="outerContainer">
             <div id="gridOuterContainer">
-                <div id="gridContainer" style={{'--grid-height': gridHeight, '--grid-width': gridWidth}}>
+                <div id="gridColumnContainer">
                     {renderGrid()}
                 </div>
             </div>
