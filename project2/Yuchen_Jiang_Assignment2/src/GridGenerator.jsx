@@ -9,13 +9,30 @@ export function Grid() {
     const [boxClass, setBoxClass] = useState(getRandomCells(gridWidth, gridHeight));
     const [toggleAutoplay, setToggleAutoplay] = useState(false);
     const [liveCell, setLiveCell] = useState(getLiveCells());
+    const [heatMap, setHeatMap] = useState(Array(40* 40).fill(0));
+    const [toggleHeatMap, setToggleHeatMap] = useState(false);
+    
+    const frame = 100;
+
+    const colorArray = [
+        "#000080", // Navy Blue
+        "#0000FF", // Blue
+        "#4169E1", // Royal Blue
+        "#6495ED", // Cornflower Blue
+        "#87CEEB", // Sky Blue
+        "#ADD8E6", // Light Blue
+        "#B0E0E6", // Powder Blue
+        "#BFEFFF", // Light Steel Blue
+        "#CFECEC", // Light Blue Grey
+        "#E0F8F8"  // Light Cyan
+      ];
 
     useEffect(() => {
         let interval;
         if (toggleAutoplay) {
             interval = setInterval(() => {
                 setBoxClass((preGrid) => getNextGrid(gridWidth, gridHeight, preGrid));
-              }, 1000);
+              }, frame);
         }
         return () => clearInterval(interval);
     }, [toggleAutoplay]);
@@ -24,6 +41,21 @@ export function Grid() {
         setLiveCell(getLiveCells());
     }, [boxClass]);
 
+    useEffect(() => {
+        setHeatMap(getHeatDegree());
+    }, [boxClass]);
+
+    function getHeatDegree() {
+        let update = [...heatMap];
+        for (let i = 0; i < gridHeight * gridWidth; i++) {
+            if (boxClass[i] === "box live") {
+                update[i] = 9;
+            } else if (update[i] > 0) {
+                update[i] -= 1;
+            }
+        }
+        return update;
+    }
 
     function getLiveCells() {
         let count = 0;
@@ -36,11 +68,17 @@ export function Grid() {
     }
 
     function resetGrid() {
+        setToggleAutoplay(false);
         setBoxClass(Array(40 * 40).fill('box'));
+        setHeatMap(Array(40 * 40).fill(0));
     }
 
     function handleAutoplay() {
         setToggleAutoplay(prevToggle => !prevToggle);
+    }
+
+    function handleHeatMap() {
+        setToggleHeatMap(prevToggle => !prevToggle);
     }
 
     function forwardOneFrame() {
@@ -113,7 +151,7 @@ export function Grid() {
     function getRandomCells(width, height) {
         const update = Array(40 * 40).fill('box');
         for (let i = 0; i < width * height; i++) {
-                const possibility = Math.floor( Math.random() * 20);
+                const possibility = Math.floor(Math.random() * 20);
                 if (possibility === 0) {
                     update[i] = update[i] === 'box' ? 'box live': 'box';
                 }
@@ -122,6 +160,7 @@ export function Grid() {
     }
     
     function randomizeLiveCell(width, height) {
+        setHeatMap(Array(40 * 40).fill(0));
         setToggleAutoplay(false);
         setBoxClass(getRandomCells(width, height));
     }
@@ -138,7 +177,8 @@ export function Grid() {
             setGridWidth(newWidth);
         }
         setToggleAutoplay(false);
-        setBoxClass(Array(40 * 40).fill('box'))
+        setBoxClass(Array(40 * 40).fill('box'));
+        setHeatMap(Array(40 * 40).fill(0));
     }
 
     function changeHeight(event) {
@@ -153,7 +193,8 @@ export function Grid() {
             setGridHeight(newHeight);
         }
         setToggleAutoplay(false);
-        setBoxClass(Array(40 * 40).fill('box'))
+        setBoxClass(Array(40 * 40).fill('box'));
+        setHeatMap(Array(40 * 40).fill(0));
     }
 
     function clickBox(index) {
@@ -165,10 +206,20 @@ export function Grid() {
         }
     }
 
+    function getColorCode(number) {
+        return colorArray[9 - number];
+    }
+
     function renderGrid() {
         const gridBoxes = [];
         for (let i = 0; i < gridWidth * gridHeight; i++) {
-            gridBoxes.push(<div key={i} className={boxClass[i]} onClick={() => clickBox(i)}></div>);
+            let boxElement;
+            if (toggleHeatMap) {
+                boxElement = <div key={i} className={boxClass[i]} onClick={() => clickBox(i)} style={{"backgroundColor": getColorCode(heatMap[i])}}></div>;
+            } else {
+                boxElement = <div key={i} className={boxClass[i]} onClick={() => clickBox(i)}></div>;
+            }
+            gridBoxes.push(boxElement);
         }
         return gridBoxes;   
     }
@@ -181,6 +232,7 @@ export function Grid() {
                 </div>
             </div>
             <div className="toolBarContainer">
+                <button className="toolItem toggle" onClick={() => handleHeatMap()}>{toggleHeatMap ? "Regular" : "Heatmap"}</button>
                 <button className="toolItem toggle" onClick={() => handleAutoplay()}>{toggleAutoplay ? "Stop": "Auto"}</button>
                 <button className="toolItem" onClick={() => randomizeLiveCell(gridWidth, gridHeight)}>Spawn Cells</button>
                 <button className="toolItem" onClick={() => resetGrid()}>Reset</button>
