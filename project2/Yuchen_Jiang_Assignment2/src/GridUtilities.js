@@ -7,7 +7,7 @@ function findPossibility(width, height) {
 }
 
 
-export default function getRandomCells(width, height) {
+export function getRandomCells(width, height) {
     const update = Array(40 * 40).fill('box');
     for (let i = 0; i < width * height; i++) {
         const possibility = Math.floor(Math.random() * (findPossibility(width, height)));
@@ -35,4 +35,26 @@ export default function getRandomCells(width, height) {
         }      
     }
     return update;
+}
+
+export function getHeatDegree(width, height, boxClass, heatMap) {
+    let update = [...heatMap];
+    for (let i = 0; i < height * width; i++) {
+        if (boxClass[i] === "box live") {
+            update[i] = 9;
+        } else if (update[i] > 0) {
+            update[i] -= 1;
+        }
+    }
+    return update;
+}
+
+export function getLiveCells(width, height, boxClass) {
+    let count = 0;
+    for (let i = 0; i < height * width; i++) {
+        if (boxClass[i] === 'box live') {
+            count += 1;
+        }
+    }
+    return count;
 }

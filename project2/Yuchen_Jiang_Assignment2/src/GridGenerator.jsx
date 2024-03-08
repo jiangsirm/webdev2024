@@ -6,15 +6,15 @@ import "./Box.css"
 import ToolBar from "./ToolBar.jsx";
 import CellInfo from "./CellInfo.jsx";
 
-import getRandomCells from "./GetRandomGrid.js";
+import {getRandomCells, getHeatDegree, getLiveCells} from "./GridUtilities.js";
 import getNextGrid from "./GetNextGrid.js";
 
 export function Grid() {
     const [gridWidth, setGridWidth] = useState(20);
     const [gridHeight, setGridHeight] = useState(20);
     const [boxClass, setBoxClass] = useState(getRandomCells(gridWidth, gridHeight));
-    const [heatMap, setHeatMap] = useState(Array(40 * 40).fill(0));
-    const [liveCell, setLiveCell] = useState(getLiveCells());
+    const [heatMap, setHeatMap] = useState(getHeatDegree(gridWidth, gridHeight, boxClass, Array(40 * 40).fill(0)));
+    const [liveCell, setLiveCell] = useState(getLiveCells(gridWidth, gridHeight, boxClass));
     const [toggleAutoplay, setToggleAutoplay] = useState(false);
     const [toggleHeatMap, setToggleHeatMap] = useState(false);
     
@@ -31,11 +31,11 @@ export function Grid() {
     }, [toggleAutoplay]);
 
     useEffect(() => {
-        setLiveCell(getLiveCells());
+        setLiveCell(getLiveCells(gridWidth, gridHeight, boxClass));
     }, [boxClass]);
 
     useEffect(() => {
-        setHeatMap(getHeatDegree());
+        setHeatMap(getHeatDegree(gridWidth, gridHeight, boxClass, heatMap));
     }, [boxClass]);
 
     function resetGrid() {
@@ -55,28 +55,6 @@ export function Grid() {
     function forwardOneFrame() {
         setToggleAutoplay(false);
         setBoxClass(getNextGrid(gridWidth, gridHeight, boxClass));
-    }
-
-    function getHeatDegree() {
-        let update = [...heatMap];
-        for (let i = 0; i < gridHeight * gridWidth; i++) {
-            if (boxClass[i] === "box live") {
-                update[i] = 9;
-            } else if (update[i] > 0) {
-                update[i] -= 1;
-            }
-        }
-        return update;
-    }
-
-    function getLiveCells() {
-        let count = 0;
-        for (let i = 0; i < gridHeight * gridWidth; i++) {
-            if (boxClass[i] === 'box live') {
-                count += 1;
-            }
-        }
-        return count;
     }
     
     function randomizeLiveCell(width, height) {

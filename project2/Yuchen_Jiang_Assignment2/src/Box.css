@@ -1,7 +1,7 @@
 .box {
     text-wrap: wrap;
-    width: 1vw;
-    height: 1vw;
+    width: 17px;
+    height: 17px;
     background-color: gray;
     border: 1px solid black;
     font-size: small;

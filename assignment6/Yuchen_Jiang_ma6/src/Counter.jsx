@@ -6,13 +6,15 @@ export default function Count() {
 
     function getCount(){
         let count = 0;
-        for (let str of GridClass) {
+        for (let str of GridClass.boxGrid) {
             if (str === "box select") {
                 count += 1
             }
         }
         return count;
     }
+
+
     return(
         <div>
             Total Count is {getCount()}
