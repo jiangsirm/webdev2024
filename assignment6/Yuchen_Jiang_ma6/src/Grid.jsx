@@ -5,10 +5,6 @@ import React, {useContext} from "react"
 export default function Grid() {
     const {GridClass, updateGridClass} = useContext(GridClassContext)
 
-    // function clickBox(index) {
-    //     updateGridClass(index, GridClass[index] === "box" ? "box select": "box")
-    // }
-
     function clickBox(index) {
         let prev = GridClass.boxGrid;
         prev[index] = prev[index] === "box" ? "box select": "box";

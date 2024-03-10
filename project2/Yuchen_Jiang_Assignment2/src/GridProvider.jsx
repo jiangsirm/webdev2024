@@ -17,7 +17,7 @@ export default function GridProvider(props) {
 
     useEffect(() => {
         const boxClass = getRandomCells(Grid.gridWidth, Grid.gridHeight)
-        const heatMap = getHeatDegree(Grid.gridWidth, Grid.gridHeight, boxClass)
+        const heatMap = getHeatDegree(Grid.gridWidth, Grid.gridHeight, boxClass, Array(40 * 40).fill(0))
         const liveCell = getLiveCells(Grid.gridWidth, Grid.gridHeight, boxClass)
 
         updateGrid("boxClass", boxClass)

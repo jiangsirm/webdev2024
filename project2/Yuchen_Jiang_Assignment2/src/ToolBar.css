@@ -1,3 +1,10 @@
 .toolItem {
     margin: 0px 10px 0px;
+    width: max-content;
+}
+
+.toolBarContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }

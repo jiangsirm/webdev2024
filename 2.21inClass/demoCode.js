@@ -145,6 +145,8 @@ console.log(someItem)
 
 const {chicken, beef_stew, lobster_soup} = someItem;
 
+someItem
+
 console.log(chicken);
 
 const func8 = function() {
@@ -161,3 +163,22 @@ let number1 = [1, 3, 12, 15, 156, 6, 7, 7,7];
 
 const filtered  = number1.filter((num) => {return num % 2 == 0});
 console.log(filtered)
+
+for (let i in number1) {
+    console.log(i)
+}
+
+for (let i of number1) {
+    console.log(i)
+}
+
+const foods2 = {
+    chicken: 15,
+    beef_stew: 20,
+    lobster_soup: 30,
+}
+
+for (let str in foods2) {
+    console.log(str)
+    console.log(foods2[str])
+}

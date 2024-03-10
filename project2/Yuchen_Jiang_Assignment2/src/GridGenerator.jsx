@@ -122,17 +122,17 @@ export function Grid() {
                 </div>
             </div>
             <ToolBar
-                    toggleHeatMap={toggleHeatMap}
-                    toggleAutoplay={toggleAutoplay}
-                    gridHeight={gridHeight}
-                    gridWidth={gridWidth}
-                    handleHeatMap={handleHeatMap}
-                    handleAutoplay={handleAutoplay}
-                    randomizeLiveCell={randomizeLiveCell}
-                    resetGrid={resetGrid}
-                    forwardOneFrame={forwardOneFrame}
-                    changeHeight={changeHeight}
-                    changeWidth={changeWidth}
+                toggleHeatMap={toggleHeatMap}
+                toggleAutoplay={toggleAutoplay}
+                gridHeight={gridHeight}
+                gridWidth={gridWidth}
+                handleHeatMap={handleHeatMap}
+                handleAutoplay={handleAutoplay}
+                randomizeLiveCell={randomizeLiveCell}
+                resetGrid={resetGrid}
+                forwardOneFrame={forwardOneFrame}
+                changeHeight={changeHeight}
+                changeWidth={changeWidth}
             />
             <CellInfo liveCell={liveCell}/>
         </div>
