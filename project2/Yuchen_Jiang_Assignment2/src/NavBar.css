@@ -1,0 +1,11 @@
+.NavBarContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 20px;
+    padding: 0px;
+    position: fixed;
+    top: 0px;
+    left: 38vw;
+}

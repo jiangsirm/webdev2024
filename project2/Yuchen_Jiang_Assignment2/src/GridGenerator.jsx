@@ -9,7 +9,7 @@ import CellInfo from "./CellInfo.jsx";
 import {getRandomCells, getHeatDegree, getLiveCells} from "./GridUtilities.js";
 import getNextGrid from "./GetNextGrid.js";
 
-export function Grid() {
+export default function Grid() {
     const [gridWidth, setGridWidth] = useState(20);
     const [gridHeight, setGridHeight] = useState(20);
     const [boxClass, setBoxClass] = useState(getRandomCells(gridWidth, gridHeight));

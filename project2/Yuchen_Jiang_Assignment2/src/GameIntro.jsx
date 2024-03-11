@@ -13,7 +13,6 @@ export function GameIntro() {
                 <ul>
                     <h3>For a space that is populated:</h3>
                     <li>Each cell with one or no neighbors dies, as if by solitude.</li>
-                    <img src={image1} width={"500px"}/>
                     <li>Each cell with four or more neighbors dies, as if by overpopulation.</li>
                     <li>Each cell with two or three neighbors survives.</li>
                 </ul>
