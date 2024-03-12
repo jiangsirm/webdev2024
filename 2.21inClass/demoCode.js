@@ -182,3 +182,15 @@ for (let str in foods2) {
     console.log(str)
     console.log(foods2[str])
 }
+
+let toggleHeatMap = true;
+
+let suffix = toggleHeatMap ? " " + "heatLevel" : "";
+
+console.log(suffix)
+toggleHeatMap = false;
+suffix = toggleHeatMap ? " " + "heatLevel" : "";
+console.log(suffix)
+
+console.log(typeof(suffix))
+console.log(Boolean(suffix))
