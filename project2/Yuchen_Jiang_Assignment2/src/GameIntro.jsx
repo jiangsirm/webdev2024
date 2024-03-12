@@ -10,14 +10,15 @@ export function GameIntro() {
         return (
             <div>
                 <ul>
+                    <li>Neighbor: any cell that is horizontally, vertically, or diagonally adjacent to a cell.</li>
                     <h3>For a space that is populated in one evolution:</h3>
-                    <li>Each cell with one or no neighbors dies, as if by solitude.</li>
-                    <li>Each cell with four or more neighbors dies, as if by overpopulation.</li>
-                    <li>Each cell with two or three neighbors survives.</li>
+                    <li>Each cell with one or no living neighbors dies, as if by solitude.</li>
+                    <li>Each cell with four or more living neighbors dies, as if by overpopulation.</li>
+                    <li>Each cell with two or three living neighbors survives.</li>
                 </ul>
                 <ul>
                     <h3>For a space that is empty in one evolution:</h3>
-                    <li>Each cell with three neighbors becomes populated</li>
+                    <li>Each cell with three living neighbors becomes populated</li>
                 </ul>
             </div>
         )
