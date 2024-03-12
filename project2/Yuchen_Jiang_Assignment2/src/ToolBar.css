@@ -8,3 +8,7 @@
     flex-direction: row;
     align-items: center;
 }
+
+nav {
+    font-size: x-large;
+}
