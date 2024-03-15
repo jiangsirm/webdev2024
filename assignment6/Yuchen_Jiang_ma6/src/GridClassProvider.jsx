@@ -5,6 +5,7 @@ export const GridClassContext = createContext();
 
 export default function GridClassProvider(props) {
 
+
     const [GridClass, setGridClass] = useState ({
         boxGrid: ["box", "box", "box", "box"]
     });
@@ -19,7 +20,7 @@ export default function GridClassProvider(props) {
 
 
     return (
-        <GridClassContext.Provider value={{GridClass, updateGridClass}}>
+        <GridClassContext.Provider value={[GridClass, updateGridClass]}>
             {props.children}
         </GridClassContext.Provider>
     )

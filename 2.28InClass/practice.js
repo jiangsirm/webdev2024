@@ -46,3 +46,70 @@ const moreColor = {
     car1: "blue"
 }
 moreColor
+
+moreColor.car1 = "red"
+
+moreColor
+
+moreColor["car1"] = "aster"
+
+moreColor
+
+console.log(returnSomething())
+// above is good
+
+function returnSomething() {
+    return moreColor["chick"]
+}
+
+console.log(returnSomething())
+
+// console.log(apple())
+// above line is not good
+
+let apple = () => {
+    return moreColor["chick"]
+}
+
+console.log(apple())
+
+let condition = "";
+
+if (condition) {
+    console.log("it is true")
+} else {
+    console.log("it is falsy")
+}
+
+const passByRef = {
+    chick: "kun"
+};
+
+function addRap(obj) {
+    obj.rap = "Rap"
+};
+
+addRap(passByRef)
+
+passByRef;
+
+// object is changed object is modifed directly
+
+let kun = "kun"
+
+function addA(str) {
+    str += "A"
+    console.log(str)
+}
+
+addA(kun)
+addA("Heizi")
+
+// destructuring
+
+kun;
+
+const{ chick, rap } = passByRef;
+
+chick
+rap

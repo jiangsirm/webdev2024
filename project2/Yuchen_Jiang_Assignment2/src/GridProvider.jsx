@@ -34,7 +34,7 @@ export default function GridProvider(props) {
     };
 
     return (
-        <GridContext.Provider value={{Grid, updateGrid}}>
+        <GridContext.Provider value={[Grid, updateGrid]}>
             {props.children}
         </GridContext.Provider>
     )

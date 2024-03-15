@@ -3,7 +3,7 @@ import { GridClassContext } from "./GridClassProvider"
 import React, {useContext} from "react"
 
 export default function Grid() {
-    const {GridClass, updateGridClass} = useContext(GridClassContext)
+    const [GridClass, updateGridClass] = useContext(GridClassContext)
 
     function clickBox(index) {
         let prev = GridClass.boxGrid;

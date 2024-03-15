@@ -1,8 +1,8 @@
 import React, {useContext} from "react";
 import { GridClassContext } from "./GridClassProvider";
 
-export default function Count() {
-    const {GridClass, updateGridClass} = useContext(GridClassContext)
+export default function Count(props) {
+    const [GridClass, updateGridClass] = useContext(GridClassContext)
 
     function getCount(){
         let count = 0;
@@ -13,7 +13,6 @@ export default function Count() {
         }
         return count;
     }
-
 
     return(
         <div>
