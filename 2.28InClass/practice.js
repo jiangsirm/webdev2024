@@ -16,6 +16,13 @@ car1;
 const foods = ["burger", "tofu", "apple", "kun"];
 const [first, second, ...remainder] = foods;
 
+for (let f in foods) {
+    console.log(f)
+}
+
+for (let f of foods) {
+    console.log(f)
+}
 first
 second
 remainder
@@ -91,7 +98,7 @@ function addRap(obj) {
 
 addRap(passByRef)
 
-passByRef;
+passByRef
 
 // object is changed object is modifed directly
 
@@ -109,7 +116,17 @@ addA("Heizi")
 
 kun;
 
-const{ chick, rap } = passByRef;
+console.log(x === undefined);
+var x = "aha";
 
-chick
-rap
+let c = "gay";
+console.log(c);
+
+
+console.log("Who is gay?");
+
+setTimeout(() => {
+    console.log("Why are you gay?")
+}, 10);
+
+console.log("Who says I\'m gay?")

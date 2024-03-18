@@ -8,21 +8,36 @@ import Credit from './Credit.jsx'
 import GridProvider from './GridProvider.jsx'
 
 import {
-  BrowserRouter,
-  Route,
-  Routes,
+  createBrowserRouter,
+  RouterProvider
 } from "react-router-dom";
+
+const routes = [
+  {
+    path: "/",
+    element: <NavBar/>,
+    children: [
+      {
+        path: "/",
+        element: <GameIntro></GameIntro>
+      },
+      {
+        path: "grid",
+        element: <GridProvider><Grid/></GridProvider>
+      },
+      {
+        path: "credit",
+        element: <Credit></Credit>
+      }
+    ]
+  }
+]
+
+const router = createBrowserRouter(routes)
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<NavBar/>}>
-          <Route index element={<GameIntro/>} />
-          <Route path="/grid" element={<GridProvider><Grid/></GridProvider>} />
-          <Route path="/credit" element={<Credit/>} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+    <RouterProvider router={router}>
+    </RouterProvider>
   </React.StrictMode>,
 )
