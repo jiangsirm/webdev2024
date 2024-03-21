@@ -123,10 +123,28 @@ let c = "gay";
 console.log(c);
 
 
-console.log("Who is gay?");
+// console.log("Who is gay?");
 
-setTimeout(() => {
-    console.log("Why are you gay?")
-}, 10);
+// setTimeout(() => {
+//     console.log("Why are you gay?")
+// }, 10);
 
-console.log("Who says I\'m gay?")
+// console.log("Who says I\'m gay?")
+
+// function mystery() {
+//     var chooseNumber = function() { return 7; };
+//     return chooseNumber();
+//     var chooseNumber = function() { return 10; };
+//   }
+//   console.log(mystery());
+
+//   const numbers = [1, 2, 3];
+
+// const newNumbers = [...numbers, 4, 5];
+
+// console.log(newNumbers);
+
+var merge = function(nums1, m, nums2, n) {
+
+    
+    };

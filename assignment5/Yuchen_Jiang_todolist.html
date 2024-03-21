@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body {
+                display: flex;
+                flex-direction: column;
+            }
+            .topContainer {
+                display: flex;
+                flex-direction: row;
+                margin-bottom: 5px;
+            }
+
+            #taskContainer{
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+            }
+
+            .taskLogs {
+                background-color: grey;
+                color: aliceblue;
+                width: 50%;
+            }
+            
+        </style>
+    </head>
+    <body>
+        <script>
+            function addTask() {
+                let section = document.getElementById("taskContainer");
+                let newTask = document.createElement('div');
+                let inputText = document.getElementById("input");
+                let text = inputText.value;
+                console.log(inputText.value)
+                if (!inputText.value) {
+                    console.log("input is empty");
+                    return;
+                }
+                newTask.className = "taskLogs";
+                newTask.innerText = text;
+                section.appendChild(newTask);
+                inputText.value = "";
+            }
+        </script>
+        <div class="topContainer">
+            <input id="input" type="text" placeholder="Please enter Task"/>
+            <button onclick="addTask()">Add Task</button>
+        </div>
+        <div id="taskContainer">
+        </div>
+    </body>
+</html>
