@@ -31,7 +31,7 @@ router.put("/",
         }
 
         for (let i = 0; i < pokeColors.length; i++) {
-            const pokemonI = pokeColors[i]
+            const pokemonI = pokeColors[i];
             if (newPoke.name === pokemonI.name) {
                 const old = pokemonI.color;
                 pokemonI.color = newPoke.color;
