@@ -144,7 +144,42 @@ console.log(c);
 
 // console.log(newNumbers);
 
-var merge = function(nums1, m, nums2, n) {
+const nums1 = [1,2,3,0,0,0];
+const nums2 = [2,5,6];
+let m = 3;
+let n = 3;
 
-    
-    };
+var merge = function(nums1, m, nums2, n) {
+    const nums3 = [...nums1];
+    let idxThree = 0;
+    let idxTwo = 0;
+    let idxOne = 0;
+    while (idxThree < m && idxTwo < n) {
+        if (nums3[idxThree] > nums2[idxTwo]){
+            nums1[idxOne] = nums2[idxTwo];
+            idxTwo++;
+        } else {
+            nums1[idxOne] = nums3[idxThree];
+            idxThree++;
+        }
+        idxOne++;
+    }
+
+    if (idxThree === m) {
+        while (idxTwo < n) {
+            nums1[idxOne] = nums2[idxTwo];
+            idxTwo++;
+            idxOne++;
+        }
+    }
+
+    if (idxTwo === n) {
+        while (idxThree < m) {
+            nums1[idxOne] = nums3[idxThree];
+            idxThree++;
+            idxOne++;
+        }
+    }
+};
+
+console.log(merge(nums1, m, nums2, n))
